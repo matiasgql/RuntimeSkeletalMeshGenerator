@@ -150,7 +150,7 @@ void FRuntimeSkeletalMeshGenerator::GenerateSkeletalMesh(
 
 	for (auto& s : Surfaces)
 	{
-		//ÕâÀï²ÄÖÊµÄ¸³Öµ²»Ò»¶¨ÍêÈ«ÕýÈ·£¬²»ÖªµÀÈç¹ûSurfacesMaterialÎª¿ÕµÄÇé¿öÏÂÊÇ·ñ»á³ö´í
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÊµÄ¸ï¿½Öµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SurfacesMaterialÎªï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (s.MaterialIndex >= 0 && s.MaterialIndex < SurfacesMaterial.Num())
 		{
 			if (s.MaterialIndex >= ImportedModelData.Materials.Num())
@@ -212,7 +212,7 @@ void FRuntimeSkeletalMeshGenerator::GenerateSkeletalMesh(
 	}
 
 	{
-		const int32 BoneNum = SkeletalMesh->GetSkeleton()->GetReferenceSkeleton().GetNum();
+		const int32 BoneNum = SkeletalMesh->Skeleton->GetReferenceSkeleton().GetRawBoneNum();
 		SkeletalMeshImportData::FBone DefaultBone;
 		DefaultBone.Name = FString(TEXT(""));
 		DefaultBone.Flags = 0;
@@ -523,7 +523,7 @@ void FRuntimeSkeletalMeshGenerator::GenerateSkeletalMesh(
 #endif
 	}
 
-	const int32 BoneNum = SkeletalMesh->GetSkeleton()->GetReferenceSkeleton().GetNum();
+	const int32 BoneNum = SkeletalMesh->Skeleton->GetReferenceSkeleton().GetNum();
 	for (int32 BoneIndex = 0; BoneIndex < BoneNum; BoneIndex++)
 	{
 #if WITH_EDITOR
