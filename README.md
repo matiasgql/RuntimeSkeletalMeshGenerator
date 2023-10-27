@@ -2,6 +2,8 @@
 The original version of the plugin has an issue that causes it to completely trash the model being loaded into UE4/5, this bug is fixed here.
 And a second issue that cause animations to fail, this bug is fixed here.
 
+See a sample on how to use it to create a procedural skeletal mesh and bones here: https://github.com/Fransferdy/creaturecreator/tree/main
+
 # Runtime Skeletal Mesh Generator for UE5
 Helper to create a SkeletalMeshComponent in UE5 at runtime.
 
