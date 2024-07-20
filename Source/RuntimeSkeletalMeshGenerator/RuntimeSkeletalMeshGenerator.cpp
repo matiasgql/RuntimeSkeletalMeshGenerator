@@ -147,21 +147,12 @@ void FRuntimeSkeletalMeshGenerator::GenerateSkeletalMesh(
 	}
 	check(ImportedModelData.PointToRawMap.Num() == Vertices.Num());
 
-
-	for (auto& s : Surfaces)
+	for (int32 I = 0; I < Surfaces.Num(); I++)
 	{
-		//�������ʵĸ�ֵ��һ����ȫ��ȷ����֪������SurfacesMaterialΪ�յ��������Ƿ�������
-		if (s.MaterialIndex >= 0 && s.MaterialIndex < SurfacesMaterial.Num())
-		{
-			if (s.MaterialIndex >= ImportedModelData.Materials.Num())
-			{
-				SkeletalMeshImportData::FMaterial& Mat = ImportedModelData.Materials.AddDefaulted_GetRef();
-				Mat.Material = SurfacesMaterial[s.MaterialIndex];
-				Mat.MaterialImportName = SurfacesMaterial[s.MaterialIndex]->GetFullName();
-			}
-		}
+		SkeletalMeshImportData::FMaterial& Mat = ImportedModelData.Materials.AddDefaulted_GetRef();
+		Mat.Material = SurfacesMaterial[I];
+		Mat.MaterialImportName = SurfacesMaterial[I]->GetFullName();
 	}
-
 
 	ImportedModelData.Faces.SetNum(Indices.Num() / 3);
 	for (int32 FaceIndex = 0; FaceIndex < ImportedModelData.Faces.Num(); FaceIndex += 1)
@@ -310,7 +301,7 @@ void FRuntimeSkeletalMeshGenerator::GenerateSkeletalMesh(
 		RenderSection.NumVertices = Surface.Vertices.Num();
 		RenderSection.BaseIndex = SurfaceIndexOffsets[I];
 		RenderSection.NumTriangles = Surface.Indices.Num() / 3;
-		RenderSection.MaterialIndex = Surfaces[I].MaterialIndex;
+		RenderSection.MaterialIndex = I;
 		RenderSection.bCastShadow = true;
 		RenderSection.bRecomputeTangent = false;
 		RenderSection.MaxBoneInfluences = MaxBoneInfluences;
