@@ -1,4 +1,4 @@
-#This plugin is riddled with bugs
+# This plugin is riddled with bugs
 Look at this project instead, it will probably serve your purposes:
 
 https://github.com/rdeioris/glTFRuntime?tab=readme-ov-file
